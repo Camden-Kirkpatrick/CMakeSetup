@@ -23,12 +23,6 @@ bool updateGame()
 	float deltaTime = GetFrameTime();
 	if (deltaTime > 0.05f) deltaTime = 0.05f; // clamp to 20fps minimum
 
-	//DrawText("TEST", 100, 100, 20, RED);
-
-	//DrawRectangle(150, 150, 100, 100, { 255, 0, 0, 127 });
-	//DrawRectangle(175, 175, 100, 100, { 0, 255, 0, 255 });
-
-
 	// Player movement
 	if (IsKeyDown(KEY_A)) { gameData.posX -= 200 * deltaTime; }
 	if (IsKeyDown(KEY_D)) { gameData.posX += 200 * deltaTime; }
@@ -45,30 +39,7 @@ bool updateGame()
 	if (gameData.posY + gameData.playerHeight > win_height)
 		gameData.posY = win_height - gameData.playerHeight;
 
-
-	// Wrap the player to the left/right/top/bottom of the screen
-    //if (gameData.posX + gameData.playerWidth > win_width)
-	//	gameData.posX = 0;
-	//if (gameData.posX < 0)
-	//	gameData.posX = win_width - gameData.playerWidth;
-
-	//if (gameData.posY + gameData.playerHeight > win_height)
-	//	gameData.posY = 0;
-	//if (gameData.posY < 0)
-	//	gameData.posY = win_height - gameData.playerHeight;
-	
-
-	// Allow the player to wrap smoothy (pixel by pixel), instead of all at once
-	//for (int i = gameData.posY; i < gameData.posY + gameData.playerHeight; i++)
-	//{
-	//	for (int j = gameData.posX; j < gameData.posX + gameData.playerWidth; j++)
-	//	{
-	//		int wrappedX = ((j % win_width) + win_width) % win_width;
-	//		int wrappedY = ((i % win_height) + win_height) % win_height;
-	//		DrawPixel(wrappedX, wrappedY, gameData.c);
-	//	}
-	//}
-
+	// Draw the player
 	DrawRectangle(gameData.posX, gameData.posY, gameData.playerWidth, gameData.playerHeight, gameData.c);
 
 	return true;
